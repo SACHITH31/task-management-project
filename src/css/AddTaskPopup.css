@@ -1,0 +1,19 @@
+.addTaskPopUpContainer {
+    background-color: grey;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.closeContainer {
+    text-align: end;
+}
+
+.allInputsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close, .addOneMoreTaskButton, .submitButton {
+    cursor: pointer;
+}

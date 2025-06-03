@@ -18,7 +18,11 @@ function AddTaskPopUp () {
     return (
         <>
           <div className="addTaskPopUpContainer">
-            <div className="titleContainer">
+            <div className="closeContainer" >
+                <h2 className="close">&times;</h2>
+            </div>
+           <div className="allInputsContainer">
+             <div className="titleContainer">
                 <label htmlFor="title">Title:</label>
                 <input type="text" placeholder="Enter Title" id="title" className="title"></input>
             </div>
@@ -26,9 +30,10 @@ function AddTaskPopUp () {
                 {temp}
             </div>
             <div className="buttonsContainer">
-                <button>Submit All</button>
-                <button onClick={AddOneMoreTaskFunction}>Add One More Task</button>
+                <button className="submitButton">Submit All</button>
+                <button className="addOneMoreTaskButton" onClick={AddOneMoreTaskFunction}>Add One More Task</button>
             </div>
+           </div>
           </div>
         </>
     )
