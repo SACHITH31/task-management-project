@@ -3,7 +3,7 @@ import AddPTag from "./AddPTag"
 
 import '../css/AddTaskPopup.css'
 
-function AddTaskPopUp () {
+function AddTaskPopUp (props) {
     const [addOneMoreTask, setAddOneMoreTask] = useState(1)
 
     function AddOneMoreTaskFunction () {
@@ -19,7 +19,7 @@ function AddTaskPopUp () {
         <>
           <div className="addTaskPopUpContainer">
             <div className="closeContainer" >
-                <h2 className="close">&times;</h2>
+                <h2 className="close" onClick={props.handleCloseAddTask}>&times;</h2>
             </div>
            <div className="allInputsContainer">
              <div className="titleContainer">

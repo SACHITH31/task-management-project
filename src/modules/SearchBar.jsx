@@ -10,10 +10,16 @@ function SearchBar() {
     function handleAddTask() {
         setAddTaskPopUp(true)
     }
+    
+    function handleCloseAddTask () {
+        setAddTaskPopUp(false)
+    }
 
 
     if (addTaskPopUp === true) {
-        popUp = <AddTaskPopUp />
+        popUp = <AddTaskPopUp addTaskPopUp = {addTaskPopUp} 
+    setAddTaskPopUp = {setAddTaskPopUp}
+    handleCloseAddTask = {handleCloseAddTask} />
     }
 
     return (
@@ -23,7 +29,6 @@ function SearchBar() {
         <button className='addTaskButton' onClick={handleAddTask}>Add Task</button>
         {popUp}
       </div>
-    
     </>
   )
 }
