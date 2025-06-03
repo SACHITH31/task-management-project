@@ -1,0 +1,16 @@
+.subTask {
+    margin-top: 10px;
+    margin-left: 65px;
+    border: none;                     
+    border-bottom: 3px solid black; 
+    height: 25px;
+    width: 200px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.delete {
+    height: 45px;
+    cursor: pointer;
+    margin-bottom: -20px;
+}

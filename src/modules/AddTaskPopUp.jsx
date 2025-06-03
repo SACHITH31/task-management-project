@@ -1,5 +1,5 @@
 import { useState } from "react"
-import AddPTag from "./AddPTag"
+import AddInputTag from "./AddInputTag"
 
 import '../css/AddTaskPopup.css'
 
@@ -12,14 +12,14 @@ function AddTaskPopUp (props) {
 
     let temp = []
     for (let i = 0; i < addOneMoreTask; i++) {
-      temp.push(<AddPTag key={i} />)
+      temp.push(<AddInputTag key={i} />)
     }
 
     return (
         <>
           <div className="addTaskPopUpContainer">
             <div className="closeContainer" >
-                <h2 className="close" onClick={props.handleCloseAddTask}>&times;</h2>
+                <p className="close" onClick={props.handleCloseAddTask}>&times;</p>
             </div>
            <div className="allInputsContainer">
              <div className="titleContainer">
@@ -30,8 +30,8 @@ function AddTaskPopUp (props) {
                 {temp}
             </div>
             <div className="buttonsContainer">
-                <button className="submitButton">Submit All</button>
-                <button className="addOneMoreTaskButton" onClick={AddOneMoreTaskFunction}>Add One More Task</button>
+                <button className="submitButton" onClick={props.handleCloseAddTask} >Submit All</button>
+                <button className="addOneMoreTaskButton" onClick={AddOneMoreTaskFunction }>Add One More Task</button>
             </div>
            </div>
           </div>
@@ -39,4 +39,10 @@ function AddTaskPopUp (props) {
     )
     
 }
+
+
+function DisplayTasks () {
+
+}
+
 export default AddTaskPopUp
