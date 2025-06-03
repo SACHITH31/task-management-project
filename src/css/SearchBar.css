@@ -1,0 +1,16 @@
+.searchBarContainer {
+    margin-top: 20px;
+}
+.searchBar {
+    height: 30px;
+    width: 250px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+.addTaskButton {
+    font-size: 15px;
+    margin-left: 5px;
+    height: 32px;
+    width: 100px;
+    cursor: pointer;
+}
