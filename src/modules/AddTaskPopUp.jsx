@@ -35,7 +35,7 @@ function AddTaskPopUp (props) {
            <div className="allInputsContainer">
              <div className="titleContainer">
                 <label htmlFor="title">Title:</label>
-                <input type="text" placeholder="Enter Title" id="title" className="title" onInput={(e) => setTitleTemp(e.target.value)}></input>
+                <input type="text" placeholder="Enter Title" id="title" className="title" required onInput={(e) => setTitleTemp(e.target.value)}></input>
             </div>
             <div className="subTasksContainer">
                 {temp}
@@ -46,7 +46,6 @@ function AddTaskPopUp (props) {
             </div>
            </div>
           </div>
-          {title}
           {tasksToggle &&  <Tasks title = {title}/>}
          
         </>
