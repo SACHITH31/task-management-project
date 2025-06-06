@@ -1,56 +1,76 @@
-import { use, useState } from "react"
+import { useState } from "react"
 import AddInputTag from "./AddInputTag"
-
 import '../css/AddTaskPopup.css'
-import Tasks from "./Tasks"
 
 function AddTaskPopUp (props) {
-    const [addOneMoreTask, setAddOneMoreTask] = useState(1)
-    const [tasksToggle, setTasksToggle] = useState(false)
-    const [titleTemp, setTitleTemp] = useState('')
-    const [title, setTitle] = useState('')
+    const [addOneMoreTask, setAddOneMoreTask] = useState(1);
+    const [tasksToggle, setTasksToggle] = useState(false);
+    const [title, setTitle] = useState('');
+    const [subTasks, setSubTasks] = useState(['']);
 
-    function AddOneMoreTaskFunction () {
-        setAddOneMoreTask(addOneMoreTask+1)
+    function AddOneMoreTaskFunction() {
+        setAddOneMoreTask(prev => prev + 1);
+        setSubTasks([...subTasks, '']);
     }
-    
+
+    function handleSubTaskChange(index, value) {
+        const newSubTasks = [...subTasks];
+        newSubTasks[index] = value;
+        setSubTasks(newSubTasks);
+    }
+
     function closePopUp() {
-        setTasksToggle(true)
-        setTitle(titleTemp)
-        console.log(`titleTemp: ${titleTemp}, Title: ${title}`)
-        // props.handleCloseAddTask()
-    }
-
-    let temp = []
-    for (let i = 0; i < addOneMoreTask; i++) {
-      temp.push(<AddInputTag key={i} />)
+        setTasksToggle(true);
     }
 
     return (
         <>
-          <div className="addTaskPopUpContainer">
-            <div className="closeContainer" >
-                <p className="close" onClick={props.handleCloseAddTask}>&times;</p>
-            </div>
-           <div className="allInputsContainer">
-             <div className="titleContainer">
-                <label htmlFor="title">Title:</label>
-                <input type="text" placeholder="Enter Title" id="title" className="title" required onInput={(e) => setTitleTemp(e.target.value)}></input>
-            </div>
-            <div className="subTasksContainer">
-                {temp}
-            </div>
-            <div className="buttonsContainer">
-                <button className="submitButton" onClick={closePopUp} >Submit All</button>
-                <button className="addOneMoreTaskButton" onClick={AddOneMoreTaskFunction }>Add One More Task</button>
-            </div>
-           </div>
-          </div>
-          {tasksToggle &&  <Tasks title = {title}/>}
-         
+            {!tasksToggle && (
+                <div className="addTaskPopUpContainer">
+                    <div className="closeContainer">
+                        <p className="close" onClick={props.handleCloseAddTask}>&times;</p>
+                    </div>
+                    <div className="allInputsContainer">
+                        <div className="titleContainer">
+                            <label htmlFor="title">Title:</label>
+                            <input
+                                type="text"
+                                placeholder="Enter Title"
+                                id="title"
+                                className="title"
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </div>
+                        <div className="subTasksContainer">
+                            {subTasks.map((task, index) => (
+                                <AddInputTag
+                                    key={index}
+                                    index={index}
+                                    value={task}
+                                    onChange={handleSubTaskChange}
+                                />
+                            ))}
+                        </div>
+                        <div className="buttonsContainer">
+                            <button className="submitButton" onClick={closePopUp}>Submit All</button>
+                            <button className="addOneMoreTaskButton" onClick={AddOneMoreTaskFunction}>Add One More Task</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {tasksToggle && (
+                <div className="AllTasksContainer">
+                    <h3>{title}</h3>
+                    <ul>
+                        {subTasks.map((task, index) => (
+                            <li key={index}>{task}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </>
     )
 }
 
-
-export default AddTaskPopUp
+export default AddTaskPopUp;

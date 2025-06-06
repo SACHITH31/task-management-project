@@ -5,6 +5,7 @@ function Tasks(props) {
     <>
     <div className='AllTasksContainer'>
     <p>{props.title}</p>
+    <p>{props.subTasksData}</p>
     </div>
 
     </>

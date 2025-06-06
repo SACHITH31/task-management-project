@@ -1,15 +1,18 @@
 import '../css/AddInputTag.css'
-import trash from '../assets/trash.svg'
+import { useState } from 'react'
 
-function AddInputTag () {
+function AddInputTag({ index, value, onChange }) {
     return (
-        <>
-         <div className="subTasksContainer">
-           
-              <input type="text" placeholder="Enter Sub Task" className="subTask"></input>
-              <img src= {trash} className='delete'></img>
-         </div>
-        </>
+        <div className="subTasksContainer">
+            <input
+                type="text"
+                placeholder="Enter Sub Task"
+                className="subTask"
+                value={value}
+                onChange={(e) => onChange(index, e.target.value)}
+            />
+        </div>
     )
 }
-export default AddInputTag
+
+export default AddInputTag;
