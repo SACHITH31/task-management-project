@@ -1,5 +1,4 @@
-import '../css/AddInputTag.css'
-import { useState } from 'react'
+import '../css/AddInputTag.css';
 
 function AddInputTag({ index, value, onChange }) {
     return (
@@ -12,7 +11,7 @@ function AddInputTag({ index, value, onChange }) {
                 onChange={(e) => onChange(index, e.target.value)}
             />
         </div>
-    )
+    );
 }
 
 export default AddInputTag;
